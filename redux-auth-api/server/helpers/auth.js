@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 
 import jwt from 'jwt-simple';
+import passport from './passport';
 
 const createTokenForUser = (user) => {
   return jwt.encode({
@@ -11,4 +12,7 @@ const createTokenForUser = (user) => {
   }, process.env.JWT_SECRET);
 };
 
-export { createTokenForUser };
+const requireAuth = passport.authenticate('jwt', { session: false });
+const requireLogin = passport.authenticate('local', { session: false });
+
+export { createTokenForUser, requireAuth, requireLogin };

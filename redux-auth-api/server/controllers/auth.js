@@ -40,6 +40,12 @@ class AuthController {
       })
     ;
   }
+
+  static signin(req, res) {
+    res.send({
+      token: createTokenForUser(req.user)
+    });
+  }
 }
 
 export default AuthController;
