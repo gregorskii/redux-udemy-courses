@@ -17,6 +17,7 @@
     "bunyan": "^1.8.9",
     "bunyan-format": "^0.2.1",
     "bunyan-middleware": "^0.6.0",
+    "cors": "^2.8.1",
     "express": "^4.15.2",
     "jwt-simple": "^0.5.1",
     "mongoose": "^4.9.1",

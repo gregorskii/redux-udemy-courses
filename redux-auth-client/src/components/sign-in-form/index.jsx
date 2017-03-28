@@ -40,7 +40,10 @@ const SigninFormComponent = (props) => {
   };
 
   return (
-    <form className="sign-in-form form-inline justify-content-end" onSubmit={handleSubmit}>
+    <form
+      className="sign-in-form form-inline justify-content-end"
+      onSubmit={handleSubmit}
+    >
       <Field
         name="email"
         type="text"

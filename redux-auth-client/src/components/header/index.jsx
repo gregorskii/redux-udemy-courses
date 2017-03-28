@@ -40,7 +40,7 @@ class Header extends Component {
     const signOut = (
       <ul className="nav navbar-nav">
         <li className="nav-item">
-          <a className="nav-link">Sign Out</a>
+          <button className="nav-link btn btn-outline-danger">Sign Out</button>
         </li>
       </ul>
     );
