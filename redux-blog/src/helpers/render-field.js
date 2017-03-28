@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react';
 import classNames from 'classnames';
 
@@ -22,19 +24,23 @@ export default ({ input, label, type, meta: { touched, error, warning } }) => {
 
   const classFeedback = classNames({
     'form-control-feedback': true,
-    'hidden': touched && (error === undefined && warning === undefined)
+    hidden: touched && (error === undefined && warning === undefined)
   });
 
   if (type === 'textarea') {
     field = (
-      <textarea {...input}
-        className={classField} />
+      <textarea
+        {...input}
+        className={classField}
+      />
     );
   } else if (type === 'text') {
     field = (
-      <input {...input}
+      <input
+        {...input}
         type={type}
-        className={classField} />
+        className={classField}
+      />
     );
   }
 
@@ -42,7 +48,8 @@ export default ({ input, label, type, meta: { touched, error, warning } }) => {
     <div className={classControl}>
       <label
         className={classLabel}
-        htmlFor={name}>{label}</label>
+        htmlFor={name}
+      >{label}</label>
 
       {field}
 
