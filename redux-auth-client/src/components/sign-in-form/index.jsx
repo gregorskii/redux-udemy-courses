@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import classNames from 'classnames';
+import isEmail from 'validator/lib/isEmail';
 
 /* eslint-disable react/prop-types */
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => {
@@ -39,6 +40,13 @@ const SigninFormComponent = (props) => {
     return 'Required';
   };
 
+  const isEmailValidator = (v) => {
+    if (isEmail(v)) {
+      return undefined;
+    }
+    return 'Valid email required';
+  };
+
   return (
     <form
       className="sign-in-form form-inline justify-content-end"
@@ -49,7 +57,7 @@ const SigninFormComponent = (props) => {
         type="text"
         label="Email"
         component={renderField}
-        validate={required}
+        validate={[required, isEmailValidator]}
       />
       <Field
         name="password"

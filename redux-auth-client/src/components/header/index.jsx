@@ -33,6 +33,12 @@ class Header extends Component {
       </ul>
     );
 
+    const signInError = (
+      <span className="navbar-text text-danger ml-sm-2">
+        Bad Login Info
+      </span>
+    );
+
     const signInForm = (
       <SigninForm onSubmit={this.onSignInSubmit} />
     );
@@ -45,6 +51,12 @@ class Header extends Component {
       </ul>
     );
 
+    const protectedLinks = (
+      <li className="nav-item">
+        <Link className="navbar-brand" to="/feature">Feature</Link>
+      </li>
+    );
+
     return (
       <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
         <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,15 +64,11 @@ class Header extends Component {
         </button>
         <Link className="navbar-brand" to="/">Redux Auth</Link>
         <ul className="nav navbar-nav mr-auto">
-          <li className="nav-item">
-            <a className="nav-link">Cats</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link">Dogs</a>
-          </li>
+          { this.props.auth.authenticated ? protectedLinks : null }
         </ul>
         { this.props.auth.authenticated ? null : signUp }
         { this.props.auth.authenticated ? null : signInForm }
+        { this.props.auth.error ? signInError : null }
         { this.props.auth.authenticated ? signOut : null }
       </nav>
     );

@@ -9,9 +9,7 @@ import { logger } from './interfaces';
 const app = express();
 
 const whitelist = process.env.CORS_WHITELIST.split(',');
-const corsOptions = {
-  origin: whitelist
-};
+const corsOptions = { origin: whitelist };
 
 // App setup
 app.use(bunyanMiddleware(logger));

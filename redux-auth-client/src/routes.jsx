@@ -9,6 +9,7 @@ import {
 import App from 'components/app';
 import Home from 'pages/home';
 import Signup from 'pages/signup';
+import Feature from 'pages/feature';
 
 const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ const AppRouter = () => {
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
         <Route path="/signup" component={Signup} />
+        <Route path="/feature" component={Feature} />
       </Route>
     </Router>
   );
