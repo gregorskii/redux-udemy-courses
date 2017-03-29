@@ -1,51 +1,14 @@
 import React, { PropTypes } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import classNames from 'classnames';
-import isEmail from 'validator/lib/isEmail';
 
-/* eslint-disable react/prop-types */
-const renderField = ({ input, label, type, meta: { touched, error, warning } }) => {
-  const classControl = classNames({
-    'form-group': true,
-    'has-danger': touched && !warning && error !== undefined,
-    'has-warning': touched && warning !== undefined
-  });
-
-  const classField = classNames({
-    'form-control': true,
-    'mr-sm-1': true,
-    'form-control-danger': touched && !warning && error !== undefined,
-    'form-control-warning': touched && warning !== undefined
-  });
-
-  return (
-    <div className={classControl}>
-      <input
-        {...input}
-        type={type}
-        className={classField}
-        placeholder={label}
-      />
-    </div>
-  );
-};
-/* eslint-enable react/prop-types */
+import {
+  renderField,
+  isEmailValidator,
+  required
+} from 'components/helpers/forms';
 
 const SigninFormComponent = (props) => {
   const { handleSubmit, pristine, submitting } = props;
-  const required = (value) => {
-    if (value) {
-      return undefined;
-    }
-    return 'Required';
-  };
-
-  const isEmailValidator = (v) => {
-    if (isEmail(v)) {
-      return undefined;
-    }
-    return 'Valid email required';
-  };
 
   return (
     <form

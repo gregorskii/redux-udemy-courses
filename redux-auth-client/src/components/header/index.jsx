@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 
-import SigninForm from 'components/sign-in-form';
+import SigninForm from 'components/signin-form';
 import ACTIONS from 'actions';
 
 const { signIn } = ACTIONS;
