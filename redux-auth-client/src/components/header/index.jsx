@@ -11,7 +11,8 @@ const { signIn } = ACTIONS;
 class Header extends Component {
   static propTypes = {
     signIn: PropTypes.func.isRequired,
-    auth: PropTypes.shape().isRequired
+    authenticated: PropTypes.bool.isRequired,
+    authError: PropTypes.bool.isRequired
   }
 
   constructor(props) {
@@ -43,10 +44,13 @@ class Header extends Component {
       <SigninForm onSubmit={this.onSignInSubmit} />
     );
 
-    const signOut = (
+    const signOutButton = (
       <ul className="nav navbar-nav">
         <li className="nav-item">
-          <button className="nav-link btn btn-outline-danger">Sign Out</button>
+          <Link
+            to="/signout"
+            className="nav-link btn btn-outline-danger"
+          >Sign Out</Link>
         </li>
       </ul>
     );
@@ -64,19 +68,22 @@ class Header extends Component {
         </button>
         <Link className="navbar-brand" to="/">Redux Auth</Link>
         <ul className="nav navbar-nav mr-auto">
-          { this.props.auth.authenticated ? protectedLinks : null }
+          { this.props.authenticated ? protectedLinks : null }
         </ul>
-        { this.props.auth.authenticated ? null : signUp }
-        { this.props.auth.authenticated ? null : signInForm }
-        { this.props.auth.error ? signInError : null }
-        { this.props.auth.authenticated ? signOut : null }
+        { this.props.authenticated ? null : signUp }
+        { this.props.authenticated ? null : signInForm }
+        { this.props.authError ? signInError : null }
+        { this.props.authenticated ? signOutButton : null }
       </nav>
     );
   }
 }
 
 const mapStateToProps = ({ auth }) => {
-  return { auth };
+  return {
+    authenticated: auth.authenticated,
+    authError: auth.error
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -20,6 +20,6 @@ export default (state = INITIAL_STATE, action) => {
     case AUTH_ERROR:
       return { ...state, authenticated: false, error: true };
     default:
-      return { ...state, authenticated: false, error: false };
+      return { ...state };
   }
 };

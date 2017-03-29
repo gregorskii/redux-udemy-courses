@@ -10,6 +10,7 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 export const authError = () => {
   // Clear auth_token from LS
   localStorage.removeItem('auth_token');
+  // Dispatch AUTH_ERROR
   return { type: AUTH_ERROR };
 };
 
@@ -35,4 +36,12 @@ export const signIn = ({ email, password }) => {
       })
     ;
   };
+};
+
+export const signOut = () => {
+  // Clear auth_token from LS
+  localStorage.removeItem('auth_token');
+  return {
+    type: UNAUTH_USER
+  }
 };
