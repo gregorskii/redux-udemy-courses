@@ -10,17 +10,18 @@ const baseConf = {
 };
 
 // The path that the browser will load chunks from
-const publicPath = '/';
+const publicPath = '';
 
 module.exports = {
   favicon: path.join(paths.src, 'static', 'favicon.png'),
+
   test: Object.assign({}, baseConf, {
     outputPath: paths.dist,
     env: testEnv,
     indexTemplatePath: path.join(paths.src, 'index.html'),
     indexOutputPath: path.join(paths.dist, 'index.html'),
     staticDirectory: path.join(paths.src, 'assets'),
-    assetsPublicPath: ''
+    assetsPublicPath: publicPath
   }),
 
   dev: Object.assign({}, baseConf, {
@@ -37,7 +38,7 @@ module.exports = {
     // Where to find static assets
     staticDirectory: path.join(paths.src, 'assets'),
     // Public path to embed in the bundle, also used as route for express static assets
-    assetsPublicPath: '',
+    assetsPublicPath: publicPath,
     // Proxy table for dev server loop-backs
     proxyTable: {},
     // Whether to use CSS sourcemaps
@@ -49,12 +50,12 @@ module.exports = {
     outputPath: paths.dist,
     indexTemplatePath: path.join(paths.src, 'index.html'),
     indexOutputPath: path.join(paths.dist, 'index.html'),
-    assetsPublicPath: '',
+    assetsPublicPath: publicPath,
     // Whether to enable source maps in production
     productionSourceMap: false,
     // Whether to gzip assets
     gzip: false,
     // Extensions to gzip
     gzipExtensions: ['js', 'css']
-  }),
+  })
 };

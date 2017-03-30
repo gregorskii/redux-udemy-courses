@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import SignupForm from 'components/signup-form';
 import ACTIONS from 'actions';
+import SignupForm from 'components/signup-form';
 import styles from './signup.scss';
 
 const { signUp } = ACTIONS;

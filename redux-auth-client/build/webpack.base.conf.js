@@ -4,7 +4,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const config = require('../config');
 const aliases = require('./aliases');
 const utils = require('./utils');
-const conf = process.env.NODE_ENV === 'test' ? config.test : config.dev;
+
+const conf = process.env.NODE_ENV === 'prod' ? config.prod : config.dev;
 
 module.exports = {
   entry: {
@@ -27,7 +28,20 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.scss$/,
+        test: /\.global\.scss$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: { modules: false }
+            },
+            { loader: 'sass-loader' }
+          ]
+        })
+      },
+      {
+        test: /^((?!(.global)).)*\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -50,7 +64,7 @@ module.exports = {
   },
   plugins: [
     new ProgressBarPlugin(),
-    // extract css into its own file
+    // extract css into its own files
     new ExtractTextPlugin({
       filename: utils.assetsPath('styles/[name].[contenthash].css'),
       allChunks: true

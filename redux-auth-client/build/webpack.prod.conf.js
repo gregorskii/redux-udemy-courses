@@ -9,6 +9,7 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const baseWebpackConfig = require('./webpack.base.conf');
 const config = require('../config');
 const utils = require('./utils');
+
 const conf = config.prod;
 const env = conf.env;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
+import 'styles/base.global.scss';
 import Header from 'components/header';
-import 'styles/base.scss';
 
 const App = (props) => {
   return (
