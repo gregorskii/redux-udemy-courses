@@ -16,7 +16,7 @@ module.exports = {
     filename: utils.assetsPath('scripts/[name].[chunkhash].js')
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.css', '.scss', '.sass'],
+    extensions: ['.js', '.jsx', '.css', '.scss'],
     alias: aliases.resolveAlias
   },
   module: {
@@ -27,15 +27,7 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /styles\.scss$/,
-        loader: [
-          { loader: 'css-loader' },
-          { loader: 'sass-loader' }
-        ]
-      },
-      {
         test: /\.scss$/,
-        exclude: /styles\.scss?$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [

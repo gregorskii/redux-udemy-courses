@@ -48,7 +48,6 @@ module.exports = merge(baseWebpackConfig, {
       context: __dirname
     }),
     new webpack.HotModuleReplacementPlugin(),
-    // new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': conf.env
     }),
