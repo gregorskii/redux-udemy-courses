@@ -27,9 +27,9 @@ class Header extends Component {
 
   render() {
     const signUp = (
-      <ul className="nav navbar-nav">
+      <ul className="header nav navbar-nav">
         <li className="nav-item">
-          <Link className="nav-link" to="/signup">Sign Up</Link>
+          <Link className="signup nav-link" to="/signup">Sign Up</Link>
         </li>
       </ul>
     );

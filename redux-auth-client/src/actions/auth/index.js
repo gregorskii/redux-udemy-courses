@@ -72,5 +72,5 @@ export const signOut = () => {
   localStorage.removeItem('auth_token');
   return {
     type: UNAUTH_USER
-  }
+  };
 };

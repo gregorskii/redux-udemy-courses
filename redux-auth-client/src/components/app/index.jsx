@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from 'components/header';
+import 'src/critical-styles/styles.scss';
 
 const App = (props) => {
   return (

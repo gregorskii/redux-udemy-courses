@@ -39,7 +39,7 @@ module.exports = merge(baseWebpackConfig, {
           formatter: eslintFriendlyFormatter,
           configFile: './.eslintrc.yml'
         }
-      },
+      }
     ]
   },
   plugins: [

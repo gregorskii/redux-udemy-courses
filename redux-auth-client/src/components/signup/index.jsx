@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import SignupForm from 'components/signup-form';
 import ACTIONS from 'actions';
+import styles from './signup.scss';
 
 const { signUp } = ACTIONS;
 
@@ -24,7 +25,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <section className="signup-form">
+      <section className={styles.signup}>
         <h2>Sign up</h2>
         <p>Our service provides great things, create an account below.</p>
         <SignupForm onSubmit={this.onSignUpSubmit} />

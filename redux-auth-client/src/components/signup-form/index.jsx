@@ -4,7 +4,8 @@ import { Field, reduxForm } from 'redux-form';
 import {
   renderField,
   isEmailValidator,
-  required
+  required,
+  passwordMatch
 } from 'components/helpers/forms';
 
 const SignupFormComponent = (props) => {
@@ -12,7 +13,7 @@ const SignupFormComponent = (props) => {
 
   return (
     <form
-      className="sign-up-form"
+      className="signup-form"
       onSubmit={handleSubmit}
     >
       <Field
@@ -34,7 +35,7 @@ const SignupFormComponent = (props) => {
         type="password"
         label="Confirm Password"
         component={renderField}
-        validate={required}
+        validate={[required, passwordMatch]}
       />
       <button
         className="btn btn-outline-success"

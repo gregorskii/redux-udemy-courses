@@ -20,7 +20,7 @@ module.exports = {
     indexTemplatePath: path.join(paths.src, 'index.html'),
     indexOutputPath: path.join(paths.dist, 'index.html'),
     staticDirectory: path.join(paths.src, 'assets'),
-    assetsPublicPath: '/'
+    assetsPublicPath: ''
   }),
 
   dev: Object.assign({}, baseConf, {
@@ -37,7 +37,7 @@ module.exports = {
     // Where to find static assets
     staticDirectory: path.join(paths.src, 'assets'),
     // Public path to embed in the bundle, also used as route for express static assets
-    assetsPublicPath: '/',
+    assetsPublicPath: '',
     // Proxy table for dev server loop-backs
     proxyTable: {},
     // Whether to use CSS sourcemaps
@@ -49,7 +49,7 @@ module.exports = {
     outputPath: paths.dist,
     indexTemplatePath: path.join(paths.src, 'index.html'),
     indexOutputPath: path.join(paths.dist, 'index.html'),
-    assetsPublicPath: '/',
+    assetsPublicPath: '',
     // Whether to enable source maps in production
     productionSourceMap: false,
     // Whether to gzip assets

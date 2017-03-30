@@ -43,3 +43,10 @@ export const isEmailValidator = (v) => {
   }
   return 'Valid email required';
 };
+
+export const passwordMatch = (value, fields) => {
+  if (value === fields.password) {
+    return undefined;
+  }
+  return 'Passwords do not match';
+};

@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -15,11 +14,6 @@ const env = conf.env;
 
 const webpackConfig = merge(baseWebpackConfig, {
   devtool: conf.productionSourceMap ? '#source-map' : false,
-  output: {
-    path: conf.outputPath,
-    filename: utils.assetsPath(`${conf.scriptsOutputPath}/[name].[chunkhash].js`),
-    chunkFilename: utils.assetsPath(`${conf.scriptsOutputPath}/[id].[chunkhash].js`)
-  },
   plugins: [
     new webpack.LoaderOptionsPlugin({
       debug: false,
@@ -34,8 +28,6 @@ const webpackConfig = merge(baseWebpackConfig, {
         warnings: false
       }
     }),
-    // extract css into its own file
-    new ExtractTextPlugin(utils.assetsPath(`${conf.cssOutputPath}/[name].[contenthash].css`)),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -67,7 +59,21 @@ const webpackConfig = merge(baseWebpackConfig, {
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
-    new FaviconsWebpackPlugin(config.favicon),
+    new FaviconsWebpackPlugin({
+      logo: config.favicon,
+      icons: {
+        android: false,
+        appleIcon: false,
+        appleStartup: false,
+        coast: false,
+        favicons: true,
+        firefox: false,
+        opengraph: false,
+        twitter: false,
+        yandex: false,
+        windows: false
+      }
+    }),
     new CopyWebpackPlugin([
       { from: 'src/static' }
     ], {
