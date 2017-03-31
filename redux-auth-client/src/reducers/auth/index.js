@@ -15,15 +15,16 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SIGNUP_USER:
     case AUTH_USER:
       return { ...state, authenticated: true, error: false };
     case UNAUTH_USER:
       return { ...state, authenticated: false, error: false };
     case AUTH_ERROR:
       return { ...state, authenticated: false, error: true };
+    case SIGNUP_USER:
+      return { ...state, authenticated: true, signupError: false, reason: '' };
     case SIGNUP_ERROR:
-      return { ...state, authenticated: false, error: true };
+      return { ...state, authenticated: false, signupError: true, ...action.payload };
     default:
       return { ...state };
   }

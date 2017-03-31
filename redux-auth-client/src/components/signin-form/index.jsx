@@ -7,6 +7,8 @@ import {
   required
 } from 'components/helpers/forms';
 
+const renderFieldFn = renderField(false);
+
 const SigninFormComponent = (props) => {
   const { handleSubmit, pristine, submitting } = props;
 
@@ -19,14 +21,14 @@ const SigninFormComponent = (props) => {
         name="email"
         type="text"
         label="Email"
-        component={renderField}
+        component={renderFieldFn}
         validate={[required, isEmailValidator]}
       />
       <Field
         name="password"
         type="Password"
         label="Password"
-        component={renderField}
+        component={renderFieldFn}
         validate={required}
       />
       <button

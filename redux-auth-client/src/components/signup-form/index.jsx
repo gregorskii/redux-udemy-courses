@@ -8,6 +8,8 @@ import {
   passwordMatch
 } from 'components/helpers/forms';
 
+const renderFieldFn = renderField(true);
+
 const SignupFormComponent = (props) => {
   const { handleSubmit, pristine, submitting } = props;
 
@@ -20,21 +22,21 @@ const SignupFormComponent = (props) => {
         name="email"
         type="text"
         label="Email"
-        component={renderField}
+        component={renderFieldFn}
         validate={[required, isEmailValidator]}
       />
       <Field
         name="password"
         type="Password"
         label="Password"
-        component={renderField}
+        component={renderFieldFn}
         validate={required}
       />
       <Field
         name="password_confirm"
         type="password"
         label="Confirm Password"
-        component={renderField}
+        component={renderFieldFn}
         validate={[required, passwordMatch]}
       />
       <button

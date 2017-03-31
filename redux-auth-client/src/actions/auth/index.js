@@ -12,11 +12,11 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 
-export const authError = (type) => {
+export const authError = (type, payload) => {
   // Clear auth_token from LS
   localStorage.removeItem('auth_token');
   // Dispatch AUTH_ERROR
-  return { type };
+  return { type, payload };
 };
 
 export const signIn = ({ email, password }) => {
@@ -60,8 +60,10 @@ export const signUp = ({ email, password }) => {
           browserHistory.push('/feature');
         }
       })
-      .catch(() => {
-        dispatch(authError(SIGNUP_ERROR));
+      .catch((err) => {
+        dispatch(authError(SIGNUP_ERROR, {
+          reason: err.response.data.error
+        }));
       })
     ;
   };

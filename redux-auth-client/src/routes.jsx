@@ -6,6 +6,7 @@ import {
   browserHistory
 } from 'react-router';
 
+import requireAuth from 'components/hocs/require-authentication';
 import App from 'components/app';
 import Home from 'pages/home';
 import Signup from 'pages/signup';
@@ -19,7 +20,7 @@ const AppRouter = () => {
         <IndexRoute component={Home} />
         <Route path="/signup" component={Signup} />
         <Route path="/signout" component={Signout} />
-        <Route path="/feature" component={Feature} />
+        <Route path="/feature" component={requireAuth(Feature)} />
       </Route>
     </Router>
   );
